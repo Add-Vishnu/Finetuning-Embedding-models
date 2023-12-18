@@ -41,60 +41,60 @@
 - There was a error when loading the dictionaries directly. So we must save them and load from the json file.
   
 - I) A `SentenceTransformersFinetuneEngine` object is created with the chosen pre-trained model ("BAAI/bge-small-en"), output path ("test_model"), train_dataset(EmbeddingQAFinetuneDataset) and val_datset(EmbeddingQAFinetuneDataset).
-- The engine's `finetune()` method performs the actual finetuning on the training data and validates on the validation data.
-- Finally, the `get_finetuned_model()` method retrieves the finetuned model for further evaluation.
+     The engine's `finetune()` method performs the actual finetuning on the training data and validates on the validation data.
+     Finally, the `get_finetuned_model()` method retrieves the finetuned model for further evaluation.
 
 
 - II) **Finetuning Linear adapter on top of fine-tuned embedding model**
-This section aims to finetune a linear adapter on top of a previously fine-tuned embedding model. Here are the main steps:
-
-**Import Libraries:** Import libraries, including EmbeddingAdapterFinetuneEngine from LlamaIndex, resolve_embed_model to get the pre-trained embedding model, and torch for PyTorch.
-
-**Resolve Embedding Model:** Get the pre-trained embedding model that has been fine-tuned previously.
-
-**Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine, providing the training dataset, base embedding model, output path for the finetuned model, and other parameters like the optimizer class and learning rate.
-
-**Finetune the Model:** Call the finetune method on the finetune engine to start the finetuning process.
-
-**Evaluate the Finetuned Model:** Obtain the finetuned model and evaluate its performance on a validation dataset using the evaluate function.
+    This section aims to finetune a linear adapter on top of a previously fine-tuned embedding model. Here are the main steps:
+    
+    **Import Libraries:** Import libraries, including EmbeddingAdapterFinetuneEngine from LlamaIndex, resolve_embed_model to get the pre-trained embedding model, and torch for PyTorch.
+    
+    **Resolve Embedding Model:** Get the pre-trained embedding model that has been fine-tuned previously.
+    
+    **Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine, providing the training dataset, base embedding model, output path for the finetuned model, and other parameters like the optimizer class and learning rate.
+    
+    **Finetune the Model:** Call the finetune method on the finetune engine to start the finetuning process.
+    
+    **Evaluate the Finetuned Model:** Obtain the finetuned model and evaluate its performance on a validation dataset using the evaluate function.
 
 
 - III) **Finetuning Linear adapter on top of original embedding model**
-This section is similar to the previous one but involves finetuning on top of the original embedding model instead of a previously fine-tuned one.
-
-**Resolve Original Embedding Model:** Get the pre-trained embedding model without any previous finetuning.
-
-**Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine similar to the previous section.
-
-**Finetune the Model:** Call the finetune method on the finetune engine.
-
-**Evaluate the Finetuned Model:** Obtain the finetuned model and evaluate its performance on a validation dataset.
+    This section is similar to the previous one but involves finetuning on top of the original embedding model instead of a previously fine-tuned one.
+    
+    **Resolve Original Embedding Model:** Get the pre-trained embedding model without any previous finetuning.
+    
+    **Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine similar to the previous section.
+    
+    **Finetune the Model:** Call the finetune method on the finetune engine.
+    
+    **Evaluate the Finetuned Model:** Obtain the finetuned model and evaluate its performance on a validation dataset.
 
 
 - IV) **Fine-tuning a Two-Layer Adapter on top of the original embedding model**
-This section introduces a more complex finetuning scenario by adding a two-layer adapter on top of the original embedding model.
-
-**Define a Two-Layer Adapter:** Create a two-layer neural network as an adapter with specific input, hidden, and output dimensions.
-
-**Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine with the original embedding model, the two-layer adapter, and other parameters.
-
-**Finetune the Model:** Call the finetune method on the finetune engine.
-
-**Load Model from Checkpoint:** Load the model from a checkpoint in the middle of the training process.
-
-**Evaluate the Finetuned Model:** Evaluate the performance of the finetuned model on a validation dataset.
+    This section introduces a more complex finetuning scenario by adding a two-layer adapter on top of the original embedding model.
+    
+    **Define a Two-Layer Adapter:** Create a two-layer neural network as an adapter with specific input, hidden, and output dimensions.
+    
+    **Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine with the original embedding model, the two-layer adapter, and other parameters.
+    
+    **Finetune the Model:** Call the finetune method on the finetune engine.
+    
+    **Load Model from Checkpoint:** Load the model from a checkpoint in the middle of the training process.
+    
+    **Evaluate the Finetuned Model:** Evaluate the performance of the finetuned model on a validation dataset.
 
 
 - V) **Fine-tuning a Two-Layer Adapter on top of the finetuned embedding model**
-This section follows a similar approach to the previous one but involves adding a two-layer adapter on top of a previously fine-tuned embedding model.
-
-**Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine with the previously fine-tuned embedding model, the two-layer adapter, and other parameters.
-
-**Finetune the Model:** Call the finetune method on the finetune engine.
-
-**Load Model from Checkpoint:** Load the model from a checkpoint in the middle of the training process.
-
-**Evaluate the Finetuned Model:** Evaluate the performance of the finetuned model on a validation dataset.
+    This section follows a similar approach to the previous one but involves adding a two-layer adapter on top of a previously fine-tuned embedding model.
+    
+    **Define Finetuning Engine:** Create an instance of EmbeddingAdapterFinetuneEngine with the previously fine-tuned embedding model, the two-layer adapter, and other parameters.
+    
+    **Finetune the Model:** Call the finetune method on the finetune engine.
+    
+    **Load Model from Checkpoint:** Load the model from a checkpoint in the middle of the training process.
+    
+    **Evaluate the Finetuned Model:** Evaluate the performance of the finetuned model on a validation dataset.
 
 
 **9. Evaluating the fine-tuned model:**
