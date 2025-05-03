@@ -109,3 +109,37 @@
 - Hit rates and other metrics for both models are compared and presented in tables and charts.
 - The fine-tuned model generally outperforms the original model, demonstrating the effectiveness of the finetuning process.
 
+### Structure of Data
+
+Data required for fine tuning the embedding models:
+
+1. Queries : Collection of all queries . It is a dictionary { query_id : query}
+
+    Eg : [“query_1” : “What is ASHA?”, “query_2” : “What does PLA stand for?”]
+
+2. Relevant Documents :  Collection of all relevant documents (for each query, it is a list of one or more relevant documents) - 
+Key : It is the unique_id of the query 
+Value : List of unique_id’s of the documents. The value can be name of the document or combination of Name_of_document and page no (Eg: “Induction Training Module for ASHAs_20”)
+
+    Eg : [“query_1” : [‘Induction Training Module for ASHAs’] , “query_2” : [‘PLA Module for ASHA_English’]]
+
+3. Corpus : Collection of all documents. It is a dictionary { document_id : text }
+
+    Eg : { “Induction Training Module for ASHAs” : “ASHAs are….” ,
+        “PLA Module for ASHA_English” : “PLA stands for…….”,
+    “Training Manual on Management of Common Emergencies, Burns and Trauma for ASHA” : “All the burns……..”
+            }
+
+### The overall dataset should be:
+
+
+	queries :  {“query_1” : “What is ASHA?”, “query_2” : “What does PLA stand for?”} , 
+
+    relevant_docs : {“query_1” : [‘Induction Training Module for ASHAs’] , “query_2” : [‘PLA Module for ASHA_English’]} ,
+
+    corpus : { 
+        “Induction Training Module for ASHAs” : “ASHAs are….” ,
+        “PLA Module for ASHA_English” : “PLA stands for…….”,
+        “Training Manual on Management of Common Emergencies, Burns and Trauma for ASHA” : “All the burns……..”
+    }
+
